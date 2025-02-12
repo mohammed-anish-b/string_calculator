@@ -21,4 +21,15 @@ void main() {
   test('Newline as a separator should work', () {
     expect(add("1\n2,3"), equals(6));
   });
+
+  test('Custom delimiter should be supported', () {
+    expect(add("//;\n1;2"), equals(3));
+  });
+
+  test('Multiple delimiters should throw an exception', () {
+    expect(
+        () => add("//;,\n1;2,3"),
+        throwsA(predicate((e) =>
+            e.toString() == "Exception: multiple delimiters not allowed")));
+  });
 }
