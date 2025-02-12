@@ -17,4 +17,8 @@ void main() {
   test('Multiple numbers should return their sum', () {
     expect(add("1,2,3,4"), equals(10));
   });
+
+  test('Newline as a separator should work', () {
+    expect(add("1\n2,3"), equals(6));
+  });
 }
