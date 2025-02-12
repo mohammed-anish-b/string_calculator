@@ -14,8 +14,25 @@ int add(String numbers) {
   }
 
   numbers = numbers.replaceAll("\n", delimiter);
-  numbers = numbers.replaceAll(",", delimiter);
-  List<int> parsedNumbers = numbers.split(delimiter).map(int.parse).toList();
+  List<String> numList = numbers.split(delimiter);
+
+  List<int> parsedNumbers = [];
+  List<int> negatives = [];
+
+  for (var num in numList) {
+    if (num.isNotEmpty) {
+      int value = int.parse(num);
+      if (value < 0) {
+        negatives.add(value);
+      } else {
+        parsedNumbers.add(value);
+      }
+    }
+  }
+
+  if (negatives.isNotEmpty) {
+    throw Exception("negative numbers not allowed ${negatives.join(",")}");
+  }
 
   return parsedNumbers.fold(0, (sum, number) => sum + number);
 }

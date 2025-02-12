@@ -32,4 +32,11 @@ void main() {
         throwsA(predicate((e) =>
             e.toString() == "Exception: multiple delimiters not allowed")));
   });
+
+  test('Negative numbers should throw an exception', () {
+    expect(
+        () => add("1,-2,3,-4"),
+        throwsA(predicate((e) =>
+            e.toString() == "Exception: negative numbers not allowed -2,-4")));
+  });
 }
