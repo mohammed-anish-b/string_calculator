@@ -1,7 +1,7 @@
 int add(String numbers) {
   if (numbers.isEmpty) return 0;
 
-  String delimiter = ",";
+  var delimiter = ",";
   final multiplierDelimiter = "*";
 
   if (numbers.startsWith("//")) {
@@ -36,8 +36,7 @@ int add(String numbers) {
     throw Exception("negative numbers not allowed ${negatives.join(",")}");
   }
 
-  final isMultiplierDelimiter = delimiter == multiplierDelimiter;
-  return parsedNumbers.fold(isMultiplierDelimiter ? 1 : 0, (sum, number) {
-    return isMultiplierDelimiter ? sum * number : sum + number;
-  });
+  return delimiter == multiplierDelimiter
+      ? parsedNumbers.fold(1, (sum, number) => sum * number)
+      : parsedNumbers.fold(0, (sum, number) => sum + number);
 }

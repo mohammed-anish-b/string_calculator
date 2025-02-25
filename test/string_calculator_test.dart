@@ -26,11 +26,11 @@ void main() {
     expect(add("//;\n1;2"), equals(3));
   });
 
-  test('delimiter * should mutiply numbers', () {
+  test('Delimiter * should mutiply numbers', () {
     expect(add("//*\n1*2*4"), equals(8));
   });
 
-  test('delimiter * ', () {
+  test('Delimiter * should work if the first number is 0', () {
     expect(add("//*\n0*2*3"), equals(0));
   });
 
