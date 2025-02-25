@@ -26,6 +26,14 @@ void main() {
     expect(add("//;\n1;2"), equals(3));
   });
 
+  test('delimiter * should mutiply numbers', () {
+    expect(add("//*\n1*2*4"), equals(8));
+  });
+
+  test('delimiter * ', () {
+    expect(add("//*\n0*2*3"), equals(0));
+  });
+
   test('Multiple delimiters should throw an exception', () {
     expect(
         () => add("//;,\n1;2,3"),

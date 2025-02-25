@@ -2,6 +2,8 @@ int add(String numbers) {
   if (numbers.isEmpty) return 0;
 
   String delimiter = ",";
+  final multiplierDelimiter = "*";
+
   if (numbers.startsWith("//")) {
     final parts = numbers.split("\n");
     delimiter = parts.first.substring(2);
@@ -34,5 +36,8 @@ int add(String numbers) {
     throw Exception("negative numbers not allowed ${negatives.join(",")}");
   }
 
-  return parsedNumbers.fold(0, (sum, number) => sum + number);
+  final isMultiplierDelimiter = delimiter == multiplierDelimiter;
+  return parsedNumbers.fold(isMultiplierDelimiter ? 1 : 0, (sum, number) {
+    return isMultiplierDelimiter ? sum * number : sum + number;
+  });
 }
